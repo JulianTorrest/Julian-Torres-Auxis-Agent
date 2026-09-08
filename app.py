@@ -116,18 +116,38 @@ tab_query, tab_rag, tab_gov, tab_trace, tab_vector, tab_temas, tab_archi, tab_pd
 with tab_query:
     st.subheader("Asistente de consulta")
     st.info(
-        "Este agente responde preguntas sobre los temas del corpus (economia, legal, "
-        "estrategia, organizacional, datos) y tambien sobre el propio sistema (LangGraph, "
-        "LLM, RAG, guardrails, observabilidad, etc.). Selecciona un perfil en el sidebar y "
-        "presiona 'Actualizar LLM' antes de consultar."
+        "Este asistente responde preguntas de negocio sobre economia, legal, estrategia, "
+        "organizacional y datos, basandose en el corpus pre-generado. Selecciona un perfil "
+        "en el sidebar y presiona 'Actualizar LLM' antes de consultar."
     )
-    with st.expander("Que puede responder y modos de generacion"):
+    with st.expander("Ejemplos de preguntas y modos de generacion"):
         st.markdown("""
-        **Preguntas tipicas que puede responder:**
-        - Conceptos de economia, legal, estrategia, organizacional, datos.
-        - Definiciones y casos del corpus pre-generado.
-        - Dudas sobre LangGraph, RAG, TF-IDF, embeddings, bases vectoriales.
-        - Funcionamiento de los guardrails, cache, memoria y observabilidad.
+        **Ejemplos de preguntas que puede responder (usuario de negocio):**
+
+        *Economia:*
+        - "¿Que es la inflacion y como afecta el poder adquisitivo?"
+        - "Explica la relacion entre tasa de interes e inversion."
+        - "Diferencia entre recesion y depresion economica."
+
+        *Legal:*
+        - "¿Cuales son los elementos esenciales de un contrato?"
+        - "¿Que es una clausula de confidencialidad y para que sirve?"
+        - "Ejemplos de responsabilidad civil y penal en el entorno empresarial."
+
+        *Estrategia:*
+        - "¿Que es un analisis FODA y como se construye?"
+        - "Como se define una ventaja competitiva sostenible."
+        - "Estrategias de crecimiento corporativo: penetracion, desarrollo de productos, mercados."
+
+        *Organizacional:*
+        - "¿Que es la cultura organizacional y por que importa?"
+        - "Tipos de estructuras organizacionales y sus ventajas."
+        - "Como gestionar el cambio dentro de una empresa."
+
+        *Datos:*
+        - "¿Que es un diccionario de datos y para que se usa?"
+        - "Diferencia entre datos, metadatos e informacion."
+        - "Para que sirven las bases de datos vectoriales en un sistema de RAG."
 
         **Perfiles del agente:**
         - *Fast (Ollama router)*: un proveedor, respuesta rapida.
