@@ -33,6 +33,7 @@ DEFAULT_MODELS = {
     "groq": "llama3-8b-8192",
     "mistral": "mistral-small-latest",
     "ollama": "llama3.2",
+    "deepseek": "deepseek-chat",
 }
 
 if "documents" not in st.session_state:
@@ -59,7 +60,7 @@ with st.sidebar:
     st.session_state.setdefault("selected_providers", ["fake"])
     st.session_state.setdefault("mode", "router")
     st.session_state.setdefault("max_retries", 1)
-    all_providers = ["fake", "openai", "gemini", "groq", "mistral", "ollama"]
+    all_providers = ["fake", "openai", "gemini", "groq", "mistral", "ollama", "deepseek"]
     selected_providers = st.multiselect("Proveedores activos", all_providers, key="selected_providers")
 
     configs = {}

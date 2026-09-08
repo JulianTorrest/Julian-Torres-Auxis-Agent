@@ -50,10 +50,12 @@ def build_client(provider: str, config: dict):
     base_url = config.get("base_url", "http://localhost:11434")
     if not model:
         return None
-    if provider in ("openai", "gemini", "groq", "mistral") and not key:
+    if provider in ("openai", "gemini", "groq", "mistral", "deepseek") and not key:
         return None
     if provider == "openai" and HAS_OPENAI:
         return ChatOpenAI(model=model, api_key=key, temperature=temp)
+    if provider == "deepseek" and HAS_OPENAI:
+        return ChatOpenAI(model=model, api_key=key, openai_api_base="https://api.deepseek.com/v1", temperature=temp)
     if provider == "gemini" and HAS_GEMINI:
         return ChatGoogleGenerativeAI(model=model, google_api_key=key, temperature=temp)
     if provider == "groq" and HAS_GROQ:

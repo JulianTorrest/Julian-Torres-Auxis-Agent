@@ -34,7 +34,7 @@ graph TB
     ORQ[LangGraph Orchestrator]
     G[Guardian]
     RAG[GraphRAG + FAISS + SQLite + Chroma]
-    LLM[Multi-LLM: Ollama / OpenAI / Gemini / Groq / Mistral]
+    LLM[Multi-LLM: Ollama / OpenAI / Gemini / Groq / Mistral / DeepSeek]
     CACHE[Semantic Cache]
     CTX[Context Manager]
     MEM[Memory Manager]
