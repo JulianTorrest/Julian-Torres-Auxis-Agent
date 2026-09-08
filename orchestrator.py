@@ -58,7 +58,7 @@ def create_workflow(rag, multi_llm: MultiLLM, tracer: ObservabilityManager = Non
     def guardrails(state: AgentState):
         injection = is_injection(state["redacted"])
         ok, violations = check_policy(state["redacted"], bool(state["pii_found"]), injection)
-        guardian = InputGuardian()
+        guardian = InputGuardian(max_requests=1000, window_seconds=60)
         guard = guardian.check(state["user"], state["redacted"])
         topic_changed = ctx.topic_changed(state["redacted"])
         all_ok = ok and guard["allowed"] and not topic_changed
@@ -86,8 +86,9 @@ def create_workflow(rag, multi_llm: MultiLLM, tracer: ObservabilityManager = Non
 
     def generate(state: AgentState):
         if not state["policy_ok"]:
+            reason = state.get("rejection_reason", "motivo no especificado")
             return {
-                "answer": "Solicitud bloqueada por violaciones de gobernanza.",
+                "answer": f"Solicitud bloqueada por violaciones de gobernanza: {reason}.",
                 "answer_provider": "guardian",
                 "tokens_input": 0,
                 "tokens_output": 0,
