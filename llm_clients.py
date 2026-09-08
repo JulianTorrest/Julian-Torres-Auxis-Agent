@@ -1,4 +1,5 @@
 import concurrent.futures
+import os
 from typing import Dict, List, Optional, Tuple
 
 try:
@@ -44,10 +45,10 @@ class FakeLLM:
         return r
 
 def build_client(provider: str, config: dict):
-    key = config.get("api_key")
+    key = config.get("api_key") or os.getenv(f"{provider.upper()}_API_KEY")
     model = config.get("model", "")
     temp = config.get("temperature", 0.1)
-    base_url = config.get("base_url", "http://localhost:11434")
+    base_url = config.get("base_url") or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
     if not model:
         return None
     if provider in ("openai", "gemini", "groq", "mistral", "deepseek") and not key:

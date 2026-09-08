@@ -73,7 +73,7 @@ with st.sidebar:
                 base_url = st.text_input(f"Base URL de {p}", value="http://localhost:11434", key=f"{p}_base")
                 configs[p] = {"model": model, "base_url": base_url}
             else:
-                api_key = st.text_input(f"API key de {p}", type="password", key=f"{p}_key")
+                api_key = st.text_input(f"API key de {p}", value=os.getenv(f"{p.upper()}_API_KEY", ""), type="password", key=f"{p}_key")
                 configs[p] = {"api_key": api_key, "model": model}
 
     modes = ["router", "parallel", "moe", "retry"]
