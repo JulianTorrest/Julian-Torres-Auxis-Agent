@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Entornos y configuraciones
+.env
+.env.*
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+
+# Datos generados en runtime
+prebuilt/*
+!prebuilt/graph_rag.pkl
+corpus/
+vector_db/
+data_catalog/
+observability/
+lib/
+_network.html
+*.sqlite
+*.sqlite3
+*.faiss
+
+# Indices y catalogos generados
+corpus_index.jsonl
+corpus_full.jsonl
+document_index.jsonl
+data_dictionary.json
+glossary.json
+metadata_inventory.json
+hierarchy.json
+topic_clusters.json
+corpus_graph.html
+corpus_graph.gml
+documento_tecnico_es.pdf
+technical_document_en.pdf

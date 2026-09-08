@@ -1,0 +1,15 @@
+streamlit
+langgraph
+scikit-learn
+fpdf2
+langchain-openai
+langchain-google-genai
+langchain-groq
+langchain-mistralai
+chromadb
+faiss-cpu
+langsmith
+langfuse
+pyvis
+langchain-ollama
+ollama
