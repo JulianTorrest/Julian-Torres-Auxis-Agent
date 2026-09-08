@@ -26,34 +26,37 @@ class TraceStore:
         self._create_table()
 
     def _create_table(self):
-        self._conn.execute("""
-            CREATE TABLE IF NOT EXISTS traces (
-                id TEXT PRIMARY KEY,
-                timestamp TEXT,
-                user TEXT,
-                query TEXT,
-                redacted TEXT,
-                pii_found TEXT,
-                injection INTEGER,
-                policy_ok INTEGER,
-                violations TEXT,
-                context TEXT,
-                answer TEXT,
-                answer_provider TEXT,
-                mode TEXT,
-                selected_provider TEXT,
-                max_retries INTEGER,
-                latency_ms REAL,
-                tokens_input INTEGER,
-                tokens_output INTEGER,
-                rejected INTEGER,
-                rejection_reason TEXT,
-                tool_used TEXT,
-                moderation_flags TEXT
-            )
-        """)
-        self._conn.commit()
-        self._migrate()
+        schema = """
+            id TEXT PRIMARY KEY,
+            timestamp TEXT,
+            user TEXT,
+            query TEXT,
+            redacted TEXT,
+            pii_found TEXT,
+            injection INTEGER,
+            policy_ok INTEGER,
+            violations TEXT,
+            context TEXT,
+            answer TEXT,
+            answer_provider TEXT,
+            mode TEXT,
+            selected_provider TEXT,
+            max_retries INTEGER,
+            latency_ms REAL,
+            tokens_input INTEGER,
+            tokens_output INTEGER,
+            rejected INTEGER,
+            rejection_reason TEXT,
+            tool_used TEXT,
+            moderation_flags TEXT
+        """
+        existing = [c[1] for c in self._conn.execute("PRAGMA table_info(traces)")]
+        if existing and len(existing) != 21:
+            self._conn.execute("DROP TABLE IF EXISTS traces")
+            existing = []
+        if not existing:
+            self._conn.execute(f"CREATE TABLE traces ({schema})")
+            self._conn.commit()
 
     def _migrate(self):
         existing = {c[1] for c in self._conn.execute("PRAGMA table_info(traces)")}
