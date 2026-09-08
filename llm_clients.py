@@ -79,11 +79,13 @@ class MultiLLM:
                 if p == "fake":
                     msg = "Respuesta simulada: no hay proveedores activos."
                 elif p == "ollama":
-                    msg = f"Proveedor {p} no disponible en este entorno."
+                    msg = f"Error: Proveedor {p} no disponible en este entorno."
                 else:
-                    msg = f"Proveedor {p} no disponible: falta la API key (configura {p.upper()}_API_KEY en Secrets)."
+                    msg = f"Error: Proveedor {p} no disponible: falta la API key (configura {p.upper()}_API_KEY en Secrets)."
                 client = FakeLLM([msg, "Respuesta generada por el LLM simulado."])
             self.clients[p] = client
+        # Fallback si todos fallan
+        self.clients.setdefault("fake", FakeLLM(["Respuesta simulada: todos los proveedores fallaron.", "Respuesta generada por el LLM simulado."]))
 
     def call_one(self, provider: str, prompt: str) -> Tuple[str, str]:
         try:
@@ -133,9 +135,19 @@ class MultiLLM:
     def generate(self, prompt: str, mode: str = "router", router_provider: Optional[str] = None, max_retries: Optional[int] = None):
         max_retries = max_retries if max_retries is not None else self.max_retries
         if mode == "router":
-            provider = router_provider or (self.providers[0] if self.providers else "fake")
-            _, answer = self.call_one(provider, prompt)
-            return provider, answer
+            # Intenta primero el proveedor del router, luego los demas seleccionados y finalmente fake
+            ordered = []
+            if router_provider and router_provider in self.clients:
+                ordered.append(router_provider)
+            ordered += [p for p in self.providers if p != router_provider and p in self.clients]
+            if not ordered:
+                ordered = ["fake"]
+            for provider in ordered:
+                _, answer = self.call_one(provider, prompt)
+                if not answer.lower().startswith("error"):
+                    return provider, answer
+            # todos fallaron
+            return "fake", _content(self.clients["fake"].invoke(prompt))
         if mode == "parallel":
             responses = self.call_parallel(prompt)
             for p, ans in responses:
