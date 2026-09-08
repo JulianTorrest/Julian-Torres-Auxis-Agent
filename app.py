@@ -428,7 +428,12 @@ with tab_archi:
         """
     option = st.selectbox("Diagrama", list(mermaid_diagrams.DIAGRAMS.keys()))
     st.subheader(option.replace("_", " ").title())
-    components.html(_mermaid_html(mermaid_diagrams.DIAGRAMS[option]), height=900)
+    components.html(
+        _mermaid_html(mermaid_diagrams.DIAGRAMS[option]),
+        height=1400,
+        width=None,
+        scrolling=True,
+    )
 
 with tab_pdf:
     st.subheader("Generar documentos tecnicos")
