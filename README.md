@@ -7,19 +7,24 @@ Agente de IA conversacional construido en Streamlit para la prueba tecnica de **
 1. [Resumen](#resumen)
 2. [Tecnologias principales](#tecnologias-principales)
 3. [Caracteristicas](#caracteristicas)
-4. [Arquitectura de la solucion](#arquitectura-de-la-solucion)
+4. [Arquitecturas](#arquitecturas)
    - [Flujo general](#flujo-general)
    - [Etapas LangGraph](#etapas-langgraph)
-   - [Arquitectura de servicios](#arquitectura-de-servicios)
-   - [Arquitectura de datos](#arquitectura-de-datos)
-   - [Ciberseguridad y guardrails](#ciberseguridad-y-guardrails)
-   - [RAG y bases vectoriales](#rag-y-bases-vectoriales)
+   - [Servicios](#servicios)
+   - [Datos](#datos)
+   - [Datos en detalle](#datos-en-detalle)
+   - [Soluciones](#soluciones)
+   - [Integraciones](#integraciones)
+   - [Ciberseguridad](#ciberseguridad)
+   - [RAG y vectores](#rag-y-vectores)
    - [Observabilidad](#observabilidad)
-5. [Estructura del repositorio](#estructura-del-repositorio)
-6. [Instalacion local](#instalacion-local)
-7. [Despliegue en Streamlit Cloud](#despliegue-en-streamlit-cloud)
-8. [Configuracion de secretos](#configuracion-de-secretos)
-9. [Uso](#uso)
+5. [Como funciona todo](#como-funciona-todo)
+   - [Camino feliz](#camino-feliz)
+   - [Pestana por pestana](#pestana-por-pestana)
+6. [Estructura del repositorio](#estructura-del-repositorio)
+7. [Instalacion local](#instalacion-local)
+8. [Despliegue en Streamlit Cloud](#despliegue-en-streamlit-cloud)
+9. [Configuracion de secretos](#configuracion-de-secretos)
 10. [Limitaciones y consideraciones](#limitaciones-y-consideraciones)
 
 ---
@@ -68,11 +73,13 @@ El asistente responde consultas de negocio sobre un corpus de al menos 50 docume
 
 ---
 
-## Arquitectura de la solucion
+## Arquitecturas
 
-Los diagramas estan disponibles en la pestana **Arquitectura** de la aplicacion y se renderizan con Mermaid.js.
+Cada diagrama es visible en la pestana **Arquitectura** de la aplicacion Streamlit y se puede seleccionar desde un menu desplegable. A continuacion se explica cada uno junto con su codigo Mermaid.
 
 ### Flujo general
+
+**Que muestra:** el flujo completo de una consulta, desde el usuario hasta la respuesta, pasando por guardian, cache semantico, GraphRAG, context manager, multi-LLM y observabilidad.
 
 ```mermaid
 graph TB
@@ -95,6 +102,8 @@ graph TB
 
 ### Etapas LangGraph
 
+**Que muestra:** los nodos del grafo de LangGraph (sanitize, guardian, retrieve, generate, trace) y como decide si bloquear o continuar segun `policy_ok`.
+
 ```mermaid
 graph LR
     A[Sanitize] --> B[Guardian]
@@ -107,7 +116,9 @@ graph LR
     G --> H[END]
 ```
 
-### Arquitectura de servicios
+### Servicios
+
+**Que muestra:** los principales componentes del backend y como Streamlit se comunica con el orquestador, el guardian, el RAG, el multi-LLM, la cache, la memoria y la auditoria.
 
 ```mermaid
 graph TB
@@ -130,7 +141,9 @@ graph TB
     ORQ --> AUD
 ```
 
-### Arquitectura de datos
+### Datos
+
+**Que muestra:** el flujo de datos pre-generados y persistentes: PDFs, indices JSONL, GraphRAG, catalogos y las distintas bases de datos vectoriales y SQLite.
 
 ```mermaid
 graph LR
@@ -155,7 +168,49 @@ graph LR
     ORQ --> MEM
 ```
 
-### Arquitectura de soluciones
+### Datos en detalle
+
+**Que muestra:** el procesamiento completo desde los 50 PDFs hasta el consumo por parte del usuario, incluyendo chunking, TF-IDF, creacion del grafo, almacenamiento en corpus_index, corpus_full, data_catalog, vector_db y observabilidad.
+
+```mermaid
+graph LR
+    subgraph Entrada
+        PDF[50 PDFs ES/EN]
+    end
+    subgraph Preproceso
+        TXT[Texto extraido]
+        CHK[Chunking por secciones]
+        TFI[TF-IDF]
+        GRA[Grafo de similaridad]
+    end
+    subgraph Almacenamiento
+        CI[corpus_index.jsonl]
+        CF[corpus_full.jsonl]
+        GP[prebuilt/graph_rag.pkl]
+        DC[data_catalog: indice, glosario, clusters, grafo]
+        VS[vector_db: SQLite, FAISS, Chroma]
+        TR[observability: SQLite trazas, cache, memoria]
+    end
+    subgraph Consumo
+        Q[Consulta del usuario]
+        R[Respuesta]
+    end
+    PDF --> TXT --> CHK
+    CHK --> CI
+    CHK --> CF
+    CHK --> TFI --> GRA --> GP
+    CHK --> VS
+    CI --> DC
+    GP --> Q
+    VS --> Q
+    DC --> Q
+    Q --> TR
+    Q --> R
+```
+
+### Soluciones
+
+**Que muestra:** la arquitectura orientada a soluciones del usuario: perfil del agente, modos de generacion, proveedores y fallback automatico entre ellos.
 
 ```mermaid
 graph TB
@@ -181,7 +236,9 @@ graph TB
     S --> U
 ```
 
-### Arquitectura de integraciones
+### Integraciones
+
+**Que muestra:** como se conectan los componentes internos con los proveedores LLM y con las herramientas de observabilidad.
 
 ```mermaid
 graph LR
@@ -236,7 +293,9 @@ graph LR
     GR --> SQ
 ```
 
-### Ciberseguridad y guardrails
+### Ciberseguridad
+
+**Que muestra:** las capas de guardrails de entrada (PII, injection, moderacion, rate limit, etc.) y de salida (PII, credenciales, moderacion, whitelist).
 
 ```mermaid
 graph LR
@@ -263,7 +322,9 @@ graph LR
     S4 --> OUT[Respuesta]
 ```
 
-### RAG y bases vectoriales
+### RAG y vectores
+
+**Que muestra:** como el texto de los PDFs se convierte en chunks, indices, grafo TF-IDF, FAISS, SQLite y Chroma para ser consultados.
 
 ```mermaid
 graph LR
@@ -283,6 +344,8 @@ graph LR
 
 ### Observabilidad
 
+**Que muestra:** el flujo de trazas a SQLite y opcionalmente a LangSmith/LangFuse, con los reportes de auditoria y estadisticas de moderacion.
+
 ```mermaid
 graph LR
     Q[Consulta] --> T[TraceStore SQLite]
@@ -292,6 +355,47 @@ graph LR
     T --> LS[LangSmith]
     T --> LF[LangFuse]
 ```
+
+---
+
+## Como funciona todo
+
+### Camino feliz
+
+1. **Abrir la app** en Streamlit Cloud o local.
+2. **Seleccionar un perfil** en el sidebar (`Fast`, `Calidad`, `Redundante`) o dejar `Personalizado`.
+3. **Seleccionar los proveedores activos** en el sidebar (`openai`, `gemini`, `groq`, `mistral`, `deepseek`, `ollama`).
+4. **Si hay mas de un proveedor y modo `router`**, elegir el proveedor para router en el desplegable.
+5. **Seleccionar el modo de generacion** (`router`, `parallel`, `moe`, `retry`).
+6. **Ajustar los reintentos** si se usa `moe` o `retry`.
+7. **Escribir la consulta** en el tab **Consulta**.
+8. **Presionar `Ejecutar agente`**.
+9. **Esperar la respuesta** en el tab **Consulta**.
+10. **Explorar el resto de pestanas** para ver trazas, RAG, catalogos, grafo y arquitectura.
+
+### Pestana por pestana
+
+- **Consulta**: escribe la pregunta, presiona `Ejecutar agente` y recibe la respuesta. El agente primero sanitiza, luego ejecuta guardian, recupera contexto con GraphRAG, genera con el/los LLM seleccionados y guarda la traza.
+- **RAG y Grafo**: muestra los nodos, aristas y forma de la matriz TF-IDF del GraphRAG cargado. Permite probar una consulta de ejemplo y ver los chunks recuperados.
+- **Gobernanza**: muestra el input guardian, las violaciones detectadas y el output guardian de la ultima consulta. Tambien permite probar la redaccion de PII.
+- **Observabilidad**: consulta las trazas almacenadas, filtra por usuario y descarga el reporte de auditoria.
+- **Base Vectorial**: permite indexar y consultar los almacenes vectoriales (SQLite, FAISS, Chroma).
+- **Temas y Red**: muestra la distribucion de temas, la red interactiva de chunks, el grafo persistente del corpus, el indice de documentos, el diccionario de datos, el glosario, el inventario de metadatos, la tabla jerarquica y los clusters.
+- **Arquitectura**: renderiza los diagramas Mermaid explicados en la seccion anterior.
+- **PDFs**: genera documentos tecnicos en espanol e ingles para descargar.
+
+### Flujo detallado del boton `Ejecutar agente`
+
+Cuando el usuario presiona `Ejecutar agente`:
+
+1. **Sanitize**: se quita PII de la consulta.
+2. **Guardian**: se valida la consulta (injection, topicos prohibidos, moderacion, rate limit, etc.).
+3. Si falla el guardian, se genera un mensaje de bloqueo con el motivo.
+4. Si pasa, **Retrieve** busca chunks relevantes con GraphRAG.
+5. **Generate** construye el prompt con el contexto y lo envia al/los LLM segun el modo.
+6. Si el proveedor seleccionado falla (rate limit, sin saldo, modelo deprecado, etc.), el sistema prueba automaticamente los demas proveedores activos.
+7. Si todos fallan, devuelve una respuesta simulada con el detalle de cada error.
+8. **Trace**: se guarda la traza con usuario, consulta, respuesta, proveedor, tokens, latencia y decisiones de gobernanza.
 
 ---
 
@@ -334,7 +438,7 @@ graph LR
    cd Julian-Torres-Auxis-Agent
    ```
 
-2. Crear entorno virtual (opcional) e instalar dependencias:
+2. Crear entorno virtual e instalar dependencias:
    ```bash
    python -m venv venv
    source venv/bin/activate  # Windows: venv\Scripts\activate
@@ -380,7 +484,7 @@ graph LR
 
 ## Configuracion de secretos
 
-El codigo lee las keys desde variables de entorno con el patron `{PROVEEDOR}_API_KEY`. Los nombres requeridos son:
+El codigo lee las keys desde variables de entorno con el patron `{PROVEEDOR}_API_KEY`:
 
 - `OPENAI_API_KEY`
 - `GEMINI_API_KEY`
@@ -392,17 +496,6 @@ El codigo lee las keys desde variables de entorno con el patron `{PROVEEDOR}_API
 - `LANGFUSE_SECRET_KEY` y `LANGFUSE_PUBLIC_KEY` (opcionales)
 
 **No subir nunca las API keys al repositorio.**
-
----
-
-## Uso
-
-1. Abrir la URL de Streamlit Cloud o `http://localhost:8501/8502`.
-2. En el sidebar seleccionar un **perfil** (Fast, Calidad, Redundante) o dejar **Personalizado**.
-3. Seleccionar los **proveedores activos** (uno o varios).
-4. Elegir el **modo de generacion**: Router, Parallel, MoE o Retry.
-5. Escribir la consulta y presionar **Ejecutar agente**.
-6. Explorar las demas pestanas: RAG y Grafo, Gobernanza, Observabilidad, Temas y Red, Arquitectura, PDFs.
 
 ---
 
