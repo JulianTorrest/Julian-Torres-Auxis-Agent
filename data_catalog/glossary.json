@@ -1,0 +1,277 @@
+[
+  {
+    "term": "economia",
+    "category": "tema",
+    "definition": "Area tematica de economia."
+  },
+  {
+    "term": "macroeconomia",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: macroeconomia."
+  },
+  {
+    "term": "microeconomia",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: microeconomia."
+  },
+  {
+    "term": "inflacion",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: inflacion."
+  },
+  {
+    "term": "tipos de interes",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: tipos de interes."
+  },
+  {
+    "term": "politica monetaria",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: politica monetaria."
+  },
+  {
+    "term": "comercio internacional",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: comercio internacional."
+  },
+  {
+    "term": "desarrollo economico",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: desarrollo economico."
+  },
+  {
+    "term": "economia laboral",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: economia laboral."
+  },
+  {
+    "term": "finanzas publicas",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: finanzas publicas."
+  },
+  {
+    "term": "mercados emergentes",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de economia: mercados emergentes."
+  },
+  {
+    "term": "legal",
+    "category": "tema",
+    "definition": "Area tematica de legal."
+  },
+  {
+    "term": "derecho civil",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: derecho civil."
+  },
+  {
+    "term": "derecho penal",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: derecho penal."
+  },
+  {
+    "term": "contratos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: contratos."
+  },
+  {
+    "term": "propiedad intelectual",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: propiedad intelectual."
+  },
+  {
+    "term": "cumplimiento normativo",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: cumplimiento normativo."
+  },
+  {
+    "term": "proteccion de datos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: proteccion de datos."
+  },
+  {
+    "term": "litigios",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: litigios."
+  },
+  {
+    "term": "fusiones y adquisiciones",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: fusiones y adquisiciones."
+  },
+  {
+    "term": "derecho laboral",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: derecho laboral."
+  },
+  {
+    "term": "arbitraje",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de legal: arbitraje."
+  },
+  {
+    "term": "estrategia",
+    "category": "tema",
+    "definition": "Area tematica de estrategia."
+  },
+  {
+    "term": "planificacion estrategica",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: planificacion estrategica."
+  },
+  {
+    "term": "ventaja competitiva",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: ventaja competitiva."
+  },
+  {
+    "term": "innovacion",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: innovacion."
+  },
+  {
+    "term": "analisis FODA",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: analisis FODA."
+  },
+  {
+    "term": "cadena de valor",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: cadena de valor."
+  },
+  {
+    "term": "crecimiento organico",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: crecimiento organico."
+  },
+  {
+    "term": "diversificacion",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: diversificacion."
+  },
+  {
+    "term": "alianzas estrategicas",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: alianzas estrategicas."
+  },
+  {
+    "term": "transformacion digital",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: transformacion digital."
+  },
+  {
+    "term": "sostenibilidad",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de estrategia: sostenibilidad."
+  },
+  {
+    "term": "organizacional",
+    "category": "tema",
+    "definition": "Area tematica de organizacional."
+  },
+  {
+    "term": "cultura organizacional",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: cultura organizacional."
+  },
+  {
+    "term": "liderazgo",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: liderazgo."
+  },
+  {
+    "term": "gestion del cambio",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: gestion del cambio."
+  },
+  {
+    "term": "gestion del talento",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: gestion del talento."
+  },
+  {
+    "term": "engagement",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: engagement."
+  },
+  {
+    "term": "comunicacion interna",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: comunicacion interna."
+  },
+  {
+    "term": "estructura organizacional",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: estructura organizacional."
+  },
+  {
+    "term": "toma de decisiones",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: toma de decisiones."
+  },
+  {
+    "term": "diversidad e inclusion",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: diversidad e inclusion."
+  },
+  {
+    "term": "gestion del desempeno",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de organizacional: gestion del desempeno."
+  },
+  {
+    "term": "datos",
+    "category": "tema",
+    "definition": "Area tematica de datos."
+  },
+  {
+    "term": "gobernanza de datos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: gobernanza de datos."
+  },
+  {
+    "term": "calidad de datos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: calidad de datos."
+  },
+  {
+    "term": "ciencia de datos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: ciencia de datos."
+  },
+  {
+    "term": "analitica descriptiva",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: analitica descriptiva."
+  },
+  {
+    "term": "machine learning",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: machine learning."
+  },
+  {
+    "term": "privacidad de datos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: privacidad de datos."
+  },
+  {
+    "term": "arquitectura de datos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: arquitectura de datos."
+  },
+  {
+    "term": "visualizacion de datos",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: visualizacion de datos."
+  },
+  {
+    "term": "big data",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: big data."
+  },
+  {
+    "term": "dataops",
+    "category": "subtema",
+    "definition": "Concepto especifico dentro de datos: dataops."
+  }
+]

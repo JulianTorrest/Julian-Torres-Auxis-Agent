@@ -1,0 +1,30 @@
+[
+  {
+    "field": "id",
+    "count": 301
+  },
+  {
+    "field": "source",
+    "count": 301
+  },
+  {
+    "field": "topic",
+    "count": 301
+  },
+  {
+    "field": "subtopic",
+    "count": 301
+  },
+  {
+    "field": "lang",
+    "count": 301
+  },
+  {
+    "field": "chunk_index",
+    "count": 301
+  },
+  {
+    "field": "text",
+    "count": 301
+  }
+]

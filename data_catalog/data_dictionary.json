@@ -1,0 +1,56 @@
+[
+  {
+    "field": "id",
+    "type": "string",
+    "description": "Identificador unico del chunk",
+    "source": "corpus_index"
+  },
+  {
+    "field": "source",
+    "type": "string",
+    "description": "Ruta del PDF origen",
+    "source": "corpus_index/corpus_full"
+  },
+  {
+    "field": "topic",
+    "type": "string",
+    "description": "Tema del documento",
+    "source": "corpus_index/corpus_full"
+  },
+  {
+    "field": "subtopic",
+    "type": "string",
+    "description": "Subtema del documento",
+    "source": "corpus_index/corpus_full"
+  },
+  {
+    "field": "lang",
+    "type": "string",
+    "description": "Idioma del documento",
+    "source": "corpus_index/corpus_full"
+  },
+  {
+    "field": "chunk_index",
+    "type": "integer",
+    "description": "Indice del chunk dentro del documento",
+    "source": "corpus_index"
+  },
+  {
+    "field": "text",
+    "type": "string",
+    "description": "Contenido textual",
+    "source": "corpus_index/corpus_full"
+  },
+  {
+    "field": "embedding",
+    "type": "float32[]",
+    "description": "Vector TF-IDF del chunk",
+    "source": "vector_db/embeddings.sqlite"
+  },
+  {
+    "field": "summary",
+    "type": "string",
+    "description": "Resumen generado por LLM",
+    "source": "document_index"
+  }
+]

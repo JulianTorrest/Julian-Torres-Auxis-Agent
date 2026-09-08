@@ -1,0 +1,412 @@
+{
+  "economia": {
+    "macroeconomia": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\macroeconomia_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\macroeconomia_en.pdf"
+      ]
+    },
+    "microeconomia": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\microeconomia_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\microeconomia_en.pdf"
+      ]
+    },
+    "inflacion": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\inflacion_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\inflacion_en.pdf"
+      ]
+    },
+    "tipos_de_interes": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\tipos_de_interes_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\tipos_de_interes_en.pdf"
+      ]
+    },
+    "politica_monetaria": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\politica_monetaria_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\politica_monetaria_en.pdf"
+      ]
+    },
+    "comercio_internacional": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\comercio_internacional_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\comercio_internacional_en.pdf"
+      ]
+    },
+    "desarrollo_economico": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\desarrollo_economico_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\desarrollo_economico_en.pdf"
+      ]
+    },
+    "economia_laboral": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\economia_laboral_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\economia_laboral_en.pdf"
+      ]
+    },
+    "finanzas_publicas": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\finanzas_publicas_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\finanzas_publicas_en.pdf"
+      ]
+    },
+    "mercados_emergentes": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\mercados_emergentes_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\economia\\mercados_emergentes_en.pdf"
+      ]
+    }
+  },
+  "legal": {
+    "derecho_civil": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\derecho_civil_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\derecho_civil_en.pdf"
+      ]
+    },
+    "derecho_penal": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\derecho_penal_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\derecho_penal_en.pdf"
+      ]
+    },
+    "contratos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\contratos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\contratos_en.pdf"
+      ]
+    },
+    "propiedad_intelectual": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\propiedad_intelectual_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\propiedad_intelectual_en.pdf"
+      ]
+    },
+    "cumplimiento_normativo": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\cumplimiento_normativo_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\cumplimiento_normativo_en.pdf"
+      ]
+    },
+    "proteccion_de_datos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\proteccion_de_datos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\proteccion_de_datos_en.pdf"
+      ]
+    },
+    "litigios": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\litigios_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\litigios_en.pdf"
+      ]
+    },
+    "fusiones_y_adquisiciones": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\fusiones_y_adquisiciones_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\fusiones_y_adquisiciones_en.pdf"
+      ]
+    },
+    "derecho_laboral": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\derecho_laboral_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\derecho_laboral_en.pdf"
+      ]
+    },
+    "arbitraje": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\arbitraje_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\legal\\arbitraje_en.pdf"
+      ]
+    }
+  },
+  "estrategia": {
+    "planificacion_estrategica": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\planificacion_estrategica_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\planificacion_estrategica_en.pdf"
+      ]
+    },
+    "ventaja_competitiva": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\ventaja_competitiva_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\ventaja_competitiva_en.pdf"
+      ]
+    },
+    "innovacion": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\innovacion_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\innovacion_en.pdf"
+      ]
+    },
+    "analisis_FODA": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\analisis_FODA_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\analisis_FODA_en.pdf"
+      ]
+    },
+    "cadena_de_valor": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\cadena_de_valor_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\cadena_de_valor_en.pdf"
+      ]
+    },
+    "crecimiento_organico": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\crecimiento_organico_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\crecimiento_organico_en.pdf"
+      ]
+    },
+    "diversificacion": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\diversificacion_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\diversificacion_en.pdf"
+      ]
+    },
+    "alianzas_estrategicas": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\alianzas_estrategicas_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\alianzas_estrategicas_en.pdf"
+      ]
+    },
+    "transformacion_digital": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\transformacion_digital_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\transformacion_digital_en.pdf"
+      ]
+    },
+    "sostenibilidad": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\sostenibilidad_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\estrategia\\sostenibilidad_en.pdf"
+      ]
+    }
+  },
+  "organizacional": {
+    "cultura_organizacional": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\cultura_organizacional_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\cultura_organizacional_en.pdf"
+      ]
+    },
+    "liderazgo": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\liderazgo_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\liderazgo_en.pdf"
+      ]
+    },
+    "gestion_del_cambio": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\gestion_del_cambio_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\gestion_del_cambio_en.pdf"
+      ]
+    },
+    "gestion_del_talento": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\gestion_del_talento_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\gestion_del_talento_en.pdf"
+      ]
+    },
+    "engagement": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\engagement_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\engagement_en.pdf"
+      ]
+    },
+    "comunicacion_interna": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\comunicacion_interna_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\comunicacion_interna_en.pdf"
+      ]
+    },
+    "estructura_organizacional": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\estructura_organizacional_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\estructura_organizacional_en.pdf"
+      ]
+    },
+    "toma_de_decisiones": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\toma_de_decisiones_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\toma_de_decisiones_en.pdf"
+      ]
+    },
+    "diversidad_e_inclusion": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\diversidad_e_inclusion_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\diversidad_e_inclusion_en.pdf"
+      ]
+    },
+    "gestion_del_desempeno": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\gestion_del_desempeno_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\organizacional\\gestion_del_desempeno_en.pdf"
+      ]
+    }
+  },
+  "datos": {
+    "gobernanza_de_datos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\gobernanza_de_datos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\gobernanza_de_datos_en.pdf"
+      ]
+    },
+    "calidad_de_datos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\calidad_de_datos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\calidad_de_datos_en.pdf"
+      ]
+    },
+    "ciencia_de_datos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\ciencia_de_datos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\ciencia_de_datos_en.pdf"
+      ]
+    },
+    "analitica_descriptiva": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\analitica_descriptiva_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\analitica_descriptiva_en.pdf"
+      ]
+    },
+    "machine_learning": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\machine_learning_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\machine_learning_en.pdf"
+      ]
+    },
+    "privacidad_de_datos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\privacidad_de_datos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\privacidad_de_datos_en.pdf"
+      ]
+    },
+    "arquitectura_de_datos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\arquitectura_de_datos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\arquitectura_de_datos_en.pdf"
+      ]
+    },
+    "visualizacion_de_datos": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\visualizacion_de_datos_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\visualizacion_de_datos_en.pdf"
+      ]
+    },
+    "big_data": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\big_data_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\big_data_en.pdf"
+      ]
+    },
+    "dataops": {
+      "es": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\dataops_es.pdf"
+      ],
+      "en": [
+        "C:\\Users\\betol\\OneDrive\\Documentos\\Prueba Tecnica Auxis Desarrollador de IA\\corpus\\datos\\dataops_en.pdf"
+      ]
+    }
+  }
+}
