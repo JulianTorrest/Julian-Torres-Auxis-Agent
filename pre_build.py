@@ -4,7 +4,7 @@ import pickle
 import build_corpus
 from retriever import GraphRAG
 import multi_store
-import data_catalog
+from data_catalog_builder import build_all
 from llm_clients import get_llm
 
 def ensure_built(base_dir="prebuilt"):
@@ -21,7 +21,7 @@ def ensure_built(base_dir="prebuilt"):
             pickle.dump(rag, f)
         multi_store.index_corpus(index_path)
         llm = get_llm(["fake"], {}, 0)
-        data_catalog.build_all(rag, llm=llm)
+        build_all(rag, llm=llm)
     return rag_path
 
 def load_rag(base_dir="prebuilt"):

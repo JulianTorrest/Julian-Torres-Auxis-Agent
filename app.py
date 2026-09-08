@@ -11,7 +11,7 @@ from pii_guard import redact_pii
 from prompt_guard import is_injection
 from governance import check_policy
 from pdf_generator import generate_pdfs
-from observability import ObservabilityManager
+from observability_manager import ObservabilityManager
 import build_corpus
 import multi_store
 import pre_build
@@ -175,13 +175,13 @@ with tab_gov:
     st.subheader("Input Guardian (encoding, SQL, topicos, moderacion, rate limit)")
     test = st.text_input("Texto a validar", value="", key="guard_test")
     if test:
-        from guardian import InputGuardian
+        from guardian_kit import InputGuardian
         g = InputGuardian().check(user, test)
         st.json(g)
     st.subheader("Output Guardian (PII, credenciales, moderacion)")
     out = st.text_input("Texto de salida a validar", value="", key="guard_out")
     if out:
-        from guardian import output_guard
+        from guardian_kit import output_guard
         st.json({"output_guard": output_guard(out)})
     st.subheader("Cache semantico")
     from semantic_cache import SemanticCache

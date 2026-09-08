@@ -1,6 +1,6 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from chunker import chunk_text
+from text_chunker import chunk_text
 
 class GraphRAG:
     def __init__(self, documents, chunk_size=200, chunk_overlap=20, top_k=3, max_hops=1):

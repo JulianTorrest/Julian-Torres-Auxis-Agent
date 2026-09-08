@@ -5,9 +5,9 @@ from langgraph.graph import StateGraph, END
 from pii_guard import redact_pii
 from prompt_guard import is_injection
 from governance import check_policy
-from guardian import InputGuardian, output_guard
+from guardian_kit import InputGuardian, output_guard
 from llm_clients import MultiLLM
-from observability import ObservabilityManager
+from observability_manager import ObservabilityManager
 from semantic_cache import SemanticCache
 from context_manager import ContextManager
 from memory import MemoryManager

@@ -3,7 +3,7 @@ import os
 import random
 from fpdf import FPDF
 from pdf_generator import _safe
-from chunker import chunk_text
+from text_chunker import chunk_text
 
 TOPICS = {
     "economia": [

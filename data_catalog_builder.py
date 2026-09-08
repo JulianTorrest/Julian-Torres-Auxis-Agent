@@ -3,7 +3,7 @@ import os
 import networkx as nx
 from sklearn.cluster import KMeans
 from pyvis.network import Network
-from chunker import chunk_by_sections
+from text_chunker import chunk_by_sections
 from summarizer import summarize
 import build_corpus
 
