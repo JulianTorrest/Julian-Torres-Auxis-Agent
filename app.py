@@ -35,8 +35,8 @@ DEFAULT_DOCS = [
 DEFAULT_MODELS = {
     "openai": "gpt-3.5-turbo",
     "gemini": "gemini-1.5-flash",
-    "groq": "llama3-8b-8192",
-    "mistral": "mistral-small-latest",
+    "groq": "llama-3.1-8b-instant",
+    "mistral": "mistral-tiny-latest",
     "ollama": "llama3.2",
     "deepseek": "deepseek-chat",
 }
@@ -149,19 +149,26 @@ with tab_query:
         """)
 
     # Configurar LLM y workflow segun la seleccion actual del sidebar
+    # Agrega automaticamente proveedores con API key para fallback robusto
     selected = st.session_state.get("selected_providers", [])
-    if not selected:
-        selected = ["fake"]
+    all_providers = ["openai", "gemini", "groq", "mistral", "ollama", "deepseek"]
+    selected = [p for p in selected if p in all_providers]
+    fallback_providers = [p for p in all_providers if p not in selected and p != "ollama" and os.getenv(f"{p.upper()}_API_KEY")]
+    active_providers = [p for p in all_providers if p in selected or p in fallback_providers]
+    if not active_providers:
+        active_providers = ["fake"]
     configs = {}
-    for p in selected:
+    for p in active_providers:
         base = {"model": DEFAULT_MODELS.get(p, "")}
         if p != "ollama":
             base["api_key"] = os.getenv(f"{p.upper()}_API_KEY", "")
         configs[p] = base
-    selected_provider = st.session_state.get("selected_provider") or (selected[0] if selected else "fake")
-    llm_key = (tuple(sorted(selected)), st.session_state.get("max_retries", 1), selected_provider, user)
+    selected_provider = st.session_state.get("selected_provider") or (active_providers[0] if active_providers else "fake")
+    if selected_provider not in active_providers:
+        selected_provider = active_providers[0]
+    llm_key = (tuple(sorted(active_providers)), st.session_state.get("max_retries", 1), selected_provider, user)
     if st.session_state.get("llm_key") != llm_key:
-        st.session_state.llm = get_llm(selected, configs, st.session_state.get("max_retries", 1))
+        st.session_state.llm = get_llm(active_providers, configs, st.session_state.get("max_retries", 1))
         st.session_state.llm_key = llm_key
     llm = st.session_state.llm
     workflow_key = (llm_key, user)
