@@ -4,7 +4,9 @@ import time
 import sqlite3
 
 class MemoryManager:
-    def __init__(self, db_path="observability/memory.sqlite"):
+    def __init__(self, db_path=None):
+        if db_path is None:
+            db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "memory.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
         self.conn = sqlite3.connect(db_path)
         self.conn.execute("""CREATE TABLE IF NOT EXISTS memory (

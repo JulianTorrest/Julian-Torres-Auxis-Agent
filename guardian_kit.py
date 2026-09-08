@@ -108,7 +108,9 @@ def redact(text: str) -> Tuple[str, List[str]]:
     return out, found
 
 class RateLimiter:
-    def __init__(self, db_path="observability/rate_limits.sqlite", max_requests=10, window_seconds=60):
+    def __init__(self, db_path=None, max_requests=10, window_seconds=60):
+        if db_path is None:
+            db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "rate_limits.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
         self.conn = sqlite3.connect(db_path)
         self.conn.execute("CREATE TABLE IF NOT EXISTS requests (user TEXT, timestamp REAL)")

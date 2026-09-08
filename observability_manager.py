@@ -19,7 +19,9 @@ except Exception:
     HAS_LANGFUSE = False
 
 class TraceStore:
-    def __init__(self, db_path="observability/traces.sqlite"):
+    def __init__(self, db_path=None):
+        if db_path is None:
+            db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "traces.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
         self.db_path = db_path
         self._conn = sqlite3.connect(db_path)

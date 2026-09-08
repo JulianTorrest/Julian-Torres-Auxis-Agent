@@ -1,9 +1,14 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import os
+import tempfile
 import time
 import json
 import pandas as pd
+
+# Directorio de datos escribible (Streamlit Cloud requiere /tmp)
+os.environ.setdefault("AUXIS_DATA_DIR", os.path.join(tempfile.gettempdir(), "auxis_agent"))
+
 from llm_clients import get_llm
 from orchestrator import create_workflow
 from retriever import GraphRAG

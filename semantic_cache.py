@@ -6,7 +6,9 @@ import hashlib
 import numpy as np
 
 class SemanticCache:
-    def __init__(self, db_path="observability/semantic_cache.sqlite"):
+    def __init__(self, db_path=None):
+        if db_path is None:
+            db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "semantic_cache.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
         self.conn = sqlite3.connect(db_path)
         self.conn.execute("""CREATE TABLE IF NOT EXISTS cache (

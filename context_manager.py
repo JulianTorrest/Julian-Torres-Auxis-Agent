@@ -6,7 +6,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from summarizer import summarize
 
 class ContextManager:
-    def __init__(self, llm=None, token_budget=2000, db_path="observability/context.sqlite"):
+    def __init__(self, llm=None, token_budget=2000, db_path=None):
+        if db_path is None:
+            db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "context.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
         self.conn = sqlite3.connect(db_path)
         self.conn.execute("""CREATE TABLE IF NOT EXISTS messages (
