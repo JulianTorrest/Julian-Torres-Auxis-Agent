@@ -403,19 +403,32 @@ with tab_archi:
         return f"""
         <html>
         <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-        <script>mermaid.initialize({{startOnLoad:true}});</script>
+        <script>
+            mermaid.initialize({{
+                startOnLoad: true,
+                maxTextSize: 9999999,
+                maxEdges: 999,
+                flowchart: {{ useMaxWidth: true, htmlLabels: true, curve: 'basis' }},
+                theme: 'default'
+            }});
+        </script>
+        <style>
+            body {{ margin: 0; padding: 0; }}
+            .mermaid {{ width: 100%; max-width: 100%; overflow: auto; }}
+        </style>
         </head>
         <body>
-        <pre class="mermaid">
+        <div class="mermaid">
 {code}
-        </pre>
+        </div>
         </body>
         </html>
         """
     option = st.selectbox("Diagrama", list(mermaid_diagrams.DIAGRAMS.keys()))
     st.subheader(option.replace("_", " ").title())
-    components.html(_mermaid_html(mermaid_diagrams.DIAGRAMS[option]), height=500)
+    components.html(_mermaid_html(mermaid_diagrams.DIAGRAMS[option]), height=900)
 
 with tab_pdf:
     st.subheader("Generar documentos tecnicos")
