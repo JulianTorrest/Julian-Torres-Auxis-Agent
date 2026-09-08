@@ -86,10 +86,10 @@ with st.sidebar:
     if st.button("Actualizar LLM"):
         st.session_state.providers = selected_providers
         st.session_state.configs = configs
-        st.session_state.mode = mode
         st.session_state.selected_provider = router_provider
-        st.session_state.max_retries = max_retries
         st.session_state.llm = get_llm(selected_providers, configs, max_retries)
+        st.session_state.run_mode = mode
+        st.session_state.run_retries = max_retries
         st.success("LLM actualizado")
 
     st.divider()
