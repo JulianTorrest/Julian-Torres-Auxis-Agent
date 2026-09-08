@@ -61,7 +61,7 @@ def create_workflow(rag, multi_llm: MultiLLM, tracer: ObservabilityManager = Non
         guardian = InputGuardian(max_requests=1000, window_seconds=60)
         guard = guardian.check(state["user"], state["redacted"])
         topic_changed = ctx.topic_changed(state["redacted"])
-        all_ok = ok and guard["allowed"] and not topic_changed
+        all_ok = ok and guard["allowed"]
         all_violations = violations + guard["reasons"]
         if topic_changed:
             all_violations.append("cambio de tema detectado")
