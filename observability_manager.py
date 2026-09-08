@@ -53,7 +53,7 @@ class TraceStore:
             moderation_flags TEXT
         """
         existing = [c[1] for c in self._conn.execute("PRAGMA table_info(traces)")]
-        if existing and len(existing) != 21:
+        if existing and len(existing) != 22:
             self._conn.execute("DROP TABLE IF EXISTS traces")
             existing = []
         if not existing:
@@ -80,7 +80,7 @@ class TraceStore:
 
     def log(self, trace: Dict):
         self._conn.execute("""
-            INSERT INTO traces VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            INSERT INTO traces VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         """, (
             trace["id"],
             trace["timestamp"],
