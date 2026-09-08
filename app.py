@@ -93,37 +93,13 @@ with st.sidebar:
         st.success("LLM actualizado")
 
     st.divider()
-    st.subheader("Ollama local")
-    ollama_host = st.text_input("Ollama host (embeddings/listado)", value="http://localhost:11434", key="ollama_host")
-    ollama_embed_model = st.text_input("Modelo de embeddings (Ollama)", value="", help="Ej: nomic-embed-text; dejar vacio para usar TF-IDF", key="ollama_embed_model")
-    os.environ["OLLAMA_BASE_URL"] = ollama_host
-    if ollama_embed_model:
-        os.environ["OLLAMA_EMBED_MODEL"] = ollama_embed_model
-    if st.button("Listar modelos Ollama"):
-        try:
-            import ollama
-            client = ollama.Client(host=ollama_host)
-            models = client.list()
-            names = [m.get("name") or m.get("model") for m in models.get("models", [])]
-            st.write("Modelos locales encontrados:", names)
-        except Exception as e:
-            st.error(f"No se pudo conectar con Ollama en {ollama_host}: {e}")
 
     st.divider()
     st.header("Gobernanza y Observabilidad")
     user = st.text_input("Usuario", value="anon")
     st.caption("Configura LANGSMITH_API_KEY y/o LANGFUSE_* como variables de entorno para trazas externas.")
 
-    st.divider()
-    st.header("Corpus del RAG")
-    docs_text = st.text_area(
-        "Documentos (uno por linea)",
-        value="\n".join(st.session_state.documents),
-        height=150,
-    )
-    if st.button("Actualizar corpus"):
-        st.session_state.documents = [d.strip() for d in docs_text.split("\n") if d.strip()]
-        st.success("Corpus actualizado")
+
 
 llm = st.session_state.get("llm", get_llm(["fake"], {}, 1))
 with st.spinner("Cargando RAG pre-generado desde el corpus..."):
@@ -138,6 +114,32 @@ tab_query, tab_rag, tab_gov, tab_trace, tab_vector, tab_temas, tab_archi, tab_pd
 ])
 
 with tab_query:
+    st.subheader("Asistente de consulta")
+    st.info(
+        "Este agente responde preguntas sobre los temas del corpus (economia, legal, "
+        "estrategia, organizacional, datos) y tambien sobre el propio sistema (LangGraph, "
+        "LLM, RAG, guardrails, observabilidad, etc.). Selecciona un perfil en el sidebar y "
+        "presiona 'Actualizar LLM' antes de consultar."
+    )
+    with st.expander("Que puede responder y modos de generacion"):
+        st.markdown("""
+        **Preguntas tipicas que puede responder:**
+        - Conceptos de economia, legal, estrategia, organizacional, datos.
+        - Definiciones y casos del corpus pre-generado.
+        - Dudas sobre LangGraph, RAG, TF-IDF, embeddings, bases vectoriales.
+        - Funcionamiento de los guardrails, cache, memoria y observabilidad.
+
+        **Perfiles del agente:**
+        - *Fast (Ollama router)*: un proveedor, respuesta rapida.
+        - *Calidad (MoE OpenAI+DeepSeek)*: varios modelos y elige la mejor respuesta.
+        - *Redundante (Parallel)*: todos en paralelo, devuelve el primero.
+
+        **Modos de generacion:**
+        - **Router**: un solo proveedor.
+        - **Parallel**: varios proveedores concurrentes, gana el primero.
+        - **MoE**: varios proveedores, seleccion de la mejor respuesta.
+        - **Retry**: reintenta hasta mejorar la calidad.
+        """)
     query = st.text_area("Escribe tu consulta", height=80)
     if st.button("Ejecutar agente"):
         final = workflow.invoke({
