@@ -76,10 +76,13 @@ class MultiLLM:
         for p in providers:
             client = build_client(p, configs.get(p, {}))
             if client is None:
-                client = FakeLLM([
-                    f"Respuesta simulada del proveedor {p}.",
-                    "Respuesta generada por el LLM simulado.",
-                ])
+                if p == "fake":
+                    msg = "Respuesta simulada: no hay proveedores activos."
+                elif p == "ollama":
+                    msg = f"Proveedor {p} no disponible en este entorno."
+                else:
+                    msg = f"Proveedor {p} no disponible: falta la API key (configura {p.upper()}_API_KEY en Secrets)."
+                client = FakeLLM([msg, "Respuesta generada por el LLM simulado."])
             self.clients[p] = client
 
     def call_one(self, provider: str, prompt: str) -> Tuple[str, str]:

@@ -67,16 +67,6 @@ with st.sidebar:
     all_providers = ["openai", "gemini", "groq", "mistral", "ollama", "deepseek"]
     selected_providers = st.multiselect("Proveedores activos", all_providers, key="selected_providers")
 
-    configs = {}
-    if selected_providers:
-        for p in selected_providers:
-            base = {"model": DEFAULT_MODELS.get(p, "")}
-            if p != "ollama":
-                base["api_key"] = os.getenv(f"{p.upper()}_API_KEY", "")
-            configs[p] = base
-    else:
-        configs = {}
-
     modes = ["router", "parallel", "moe", "retry"]
     mode = st.selectbox("Modo de generacion", modes, key="mode")
     if mode == "router" and len(selected_providers) > 1:
@@ -87,15 +77,7 @@ with st.sidebar:
     else:
         router_provider = selected_providers[0] if selected_providers else "fake"
     max_retries = st.slider("Reintentos MoE / retry", 0, 3, key="max_retries")
-
-    if st.button("Actualizar LLM"):
-        st.session_state.providers = selected_providers
-        st.session_state.configs = configs
-        st.session_state.selected_provider = router_provider
-        st.session_state.llm = get_llm(selected_providers, configs, max_retries)
-        st.session_state.run_mode = mode
-        st.session_state.run_retries = max_retries
-        st.success("LLM actualizado")
+    st.session_state["selected_provider"] = router_provider
 
     st.divider()
 
@@ -106,11 +88,10 @@ with st.sidebar:
 
 
 
-llm = st.session_state.get("llm", get_llm(["fake"], {}, 1))
 with st.spinner("Cargando RAG pre-generado desde el corpus..."):
     rag = pre_build.load_rag()
+
 tracer = ObservabilityManager()
-workflow = create_workflow(rag, llm, tracer, session_id=user, token_budget=2000)
 
 st.title("Prueba Tecnica - Agente IA con LangGraph + Router/MoE")
 
@@ -122,8 +103,9 @@ with tab_query:
     st.subheader("Asistente de consulta")
     st.info(
         "Este asistente responde preguntas de negocio sobre economia, legal, estrategia, "
-        "organizacional y datos, basandose en el corpus pre-generado. Selecciona un perfil "
-        "en el sidebar y presiona 'Actualizar LLM' antes de consultar."
+        "organizacional y datos, basandose en el corpus pre-generado. "
+        "Selecciona proveedores en el sidebar y asegurate de tener las API keys en "
+        "Settings > Secrets (no se muestran en la UI)."
     )
     with st.expander("Ejemplos de preguntas y modos de generacion"):
         st.markdown("""
@@ -165,6 +147,36 @@ with tab_query:
         - **MoE**: varios proveedores, seleccion de la mejor respuesta.
         - **Retry**: reintenta hasta mejorar la calidad.
         """)
+
+    # Configurar LLM y workflow segun la seleccion actual del sidebar
+    selected = st.session_state.get("selected_providers", [])
+    if not selected:
+        selected = ["fake"]
+    configs = {}
+    for p in selected:
+        base = {"model": DEFAULT_MODELS.get(p, "")}
+        if p != "ollama":
+            base["api_key"] = os.getenv(f"{p.upper()}_API_KEY", "")
+        configs[p] = base
+    selected_provider = st.session_state.get("selected_provider") or (selected[0] if selected else "fake")
+    llm_key = (tuple(sorted(selected)), st.session_state.get("max_retries", 1), selected_provider, user)
+    if st.session_state.get("llm_key") != llm_key:
+        st.session_state.llm = get_llm(selected, configs, st.session_state.get("max_retries", 1))
+        st.session_state.llm_key = llm_key
+    llm = st.session_state.llm
+    workflow_key = (llm_key, user)
+    if st.session_state.get("workflow_key") != workflow_key:
+        st.session_state.workflow = create_workflow(rag, llm, tracer, session_id=user, token_budget=2000)
+        st.session_state.workflow_key = workflow_key
+    workflow = st.session_state.workflow
+
+    missing_keys = [p for p in selected if p not in ("fake", "ollama") and not os.getenv(f"{p.upper()}_API_KEY")]
+    if missing_keys:
+        st.warning(
+            f"Proveedores sin API key: {', '.join(missing_keys)}. "
+            "Configura las variables en Streamlit Cloud Settings > Secrets para obtener respuestas reales."
+        )
+
     query = st.text_area("Escribe tu consulta", height=80)
     if st.button("Ejecutar agente"):
         final = workflow.invoke({
@@ -172,7 +184,7 @@ with tab_query:
             "user": user,
             "start_time": time.time(),
             "mode": st.session_state.get("mode", "router"),
-            "selected_provider": st.session_state.get("selected_provider", "fake"),
+            "selected_provider": selected_provider,
             "max_retries": st.session_state.get("max_retries", 1),
         })
         st.session_state.result = final
