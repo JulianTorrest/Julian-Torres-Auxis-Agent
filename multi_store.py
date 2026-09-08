@@ -43,7 +43,7 @@ class SQLiteVectorStore:
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
         self.db_path = db_path
         self.embedder = Embedder()
-        self._conn = sqlite3.connect(db_path)
+        self._conn = sqlite3.connect(db_path, check_same_thread=False)
         self._conn.execute("CREATE TABLE IF NOT EXISTS chunks (id TEXT PRIMARY KEY, text TEXT, metadata TEXT, embedding BLOB)")
         self._conn.commit()
     def add_texts(self, texts: List[str], metadatas: List[Dict], ids: List[str]):

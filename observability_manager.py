@@ -24,7 +24,7 @@ class TraceStore:
             db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "traces.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
         self.db_path = db_path
-        self._conn = sqlite3.connect(db_path)
+        self._conn = sqlite3.connect(db_path, check_same_thread=False)
         self._create_table()
 
     def _create_table(self):

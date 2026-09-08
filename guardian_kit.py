@@ -112,7 +112,7 @@ class RateLimiter:
         if db_path is None:
             db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "rate_limits.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
-        self.conn = sqlite3.connect(db_path)
+        self.conn = sqlite3.connect(db_path, check_same_thread=False)
         self.conn.execute("CREATE TABLE IF NOT EXISTS requests (user TEXT, timestamp REAL)")
         self.conn.commit()
         self.max_requests = max_requests

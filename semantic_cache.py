@@ -10,7 +10,7 @@ class SemanticCache:
         if db_path is None:
             db_path = os.path.join(os.getenv("AUXIS_DATA_DIR", "observability"), "semantic_cache.sqlite")
         os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
-        self.conn = sqlite3.connect(db_path)
+        self.conn = sqlite3.connect(db_path, check_same_thread=False)
         self.conn.execute("""CREATE TABLE IF NOT EXISTS cache (
             id TEXT PRIMARY KEY,
             query_hash TEXT,
