@@ -118,4 +118,114 @@ graph LR
     T --> LS[LangSmith]
     T --> LF[LangFuse]
 """,
+    "soluciones": """
+graph TB
+    subgraph Usuario
+        U[Usuario de negocio]
+        S[Streamlit UI]
+    end
+    subgraph Agente
+        A[Agente LangGraph]
+        P[Perfiles: Fast, Calidad, Redundante]
+        M[Modos: Router, Parallel, MoE, Retry]
+    end
+    subgraph Proveedores
+        LLM[OpenAI, Gemini, Groq, Mistral, DeepSeek, Ollama, Fake]
+    end
+    U -->|consulta| S
+    S -->|selecciona perfil y modo| A
+    A --> P
+    P --> M
+    M -->|fallback automatico| LLM
+    LLM -->|respuesta| A
+    A -->|respuesta + metadatos| S
+    S --> U
+""",
+    "integraciones": """
+graph LR
+    subgraph Frontend
+        ST[Streamlit]
+    end
+    subgraph Core
+        LG[LangGraph / Orchestrator]
+        GC[Guardian Kit]
+        CM[Context Manager]
+        SC[Semantic Cache]
+        MM[Memory Manager]
+    end
+    subgraph RAG
+        GR[GraphRAG]
+        TF[TF-IDF]
+        FAISS[FAISS]
+        CH[ChromaDB]
+        SQ[SQLite embeddings]
+    end
+    subgraph Proveedores
+        OP[OpenAI]
+        GM[Gemini]
+        GQ[Groq]
+        MI[Mistral]
+        DS[DeepSeek]
+        OL[Ollama]
+    end
+    subgraph Observabilidad
+        TR[SQLite trazas]
+        LS[LangSmith]
+        LF[LangFuse]
+    end
+    ST -->|HTTP| LG
+    LG -->|sanitize| GC
+    LG -->|retrieve| GR
+    LG -->|generate| OP
+    LG -->|generate| GM
+    LG -->|generate| GQ
+    LG -->|generate| MI
+    LG -->|generate| DS
+    LG -->|generate| OL
+    LG -->|cache| SC
+    LG -->|context| CM
+    LG -->|memory| MM
+    LG -->|trace| TR
+    TR -->|opcional| LS
+    TR -->|opcional| LF
+    GR --> TF
+    GR --> FAISS
+    GR --> CH
+    GR --> SQ
+""",
+    "datos_detalle": """
+graph LR
+    subgraph Entrada
+        PDF[50 PDFs ES/EN]
+    end
+    subgraph Preproceso
+        TXT[Texto extraido]
+        CHK[Chunking por secciones]
+        TFI[TF-IDF]
+        GRA[Grafo de similaridad]
+    end
+    subgraph Almacenamiento
+        CI[corpus_index.jsonl]
+        CF[corpus_full.jsonl]
+        GP[prebuilt/graph_rag.pkl]
+        DC[data_catalog: indice, glosario, clusters, grafo]
+        VS[vector_db: SQLite, FAISS, Chroma]
+        TR[observability: SQLite trazas, cache, memoria]
+    end
+    subgraph Consumo
+        Q[Consulta del usuario]
+        R[Respuesta]
+    end
+    PDF --> TXT --> CHK
+    CHK --> CI
+    CHK --> CF
+    CHK --> TFI --> GRA --> GP
+    CHK --> VS
+    CI --> DC
+    GP --> Q
+    VS --> Q
+    DC --> Q
+    Q --> TR
+    Q --> R
+""",
 }
