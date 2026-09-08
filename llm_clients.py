@@ -45,10 +45,10 @@ class FakeLLM:
         return r
 
 def build_client(provider: str, config: dict):
-    key = config.get("api_key") or os.getenv(f"{provider.upper()}_API_KEY")
-    model = config.get("model", "")
+    key = (config.get("api_key") or os.getenv(f"{provider.upper()}_API_KEY") or "").strip().strip('"').strip("'")
+    model = config.get("model", "").strip()
     temp = config.get("temperature", 0.1)
-    base_url = config.get("base_url") or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    base_url = (config.get("base_url") or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")).strip().strip('"').strip("'")
     if not model:
         return None
     if provider in ("openai", "gemini", "groq", "mistral", "deepseek") and not key:
@@ -142,12 +142,14 @@ class MultiLLM:
             ordered += [p for p in self.providers if p != router_provider and p in self.clients]
             if not ordered:
                 ordered = ["fake"]
+            errors = []
             for provider in ordered:
                 _, answer = self.call_one(provider, prompt)
                 if not answer.lower().startswith("error"):
                     return provider, answer
+                errors.append(f"{provider}: {answer}")
             # todos fallaron
-            return "fake", _content(self.clients["fake"].invoke(prompt))
+            return "fake", "Respuesta simulada: todos los proveedores fallaron.\n\n" + "\n".join(errors)
         if mode == "parallel":
             responses = self.call_parallel(prompt)
             for p, ans in responses:
