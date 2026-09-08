@@ -43,9 +43,8 @@ with st.sidebar:
     st.header("Perfil del agente")
     profiles = {
         "Fast (Ollama router)": {"selected_providers": ["ollama"], "mode": "router", "max_retries": 0},
-        "Calidad (MoE Ollama+OpenAI)": {"selected_providers": ["ollama", "openai"], "mode": "moe", "max_retries": 2},
-        "Redundante (Parallel)": {"selected_providers": ["ollama", "openai", "gemini"], "mode": "parallel", "max_retries": 0},
-        "Seguro (fake)": {"selected_providers": ["fake"], "mode": "router", "max_retries": 0},
+        "Calidad (MoE OpenAI+DeepSeek)": {"selected_providers": ["openai", "deepseek"], "mode": "moe", "max_retries": 2},
+        "Redundante (Parallel)": {"selected_providers": ["openai", "gemini", "groq"], "mode": "parallel", "max_retries": 0},
     }
     profile = st.selectbox("Selecciona un perfil", ["Personalizado"] + list(profiles.keys()), key="profile")
     if st.button("Aplicar perfil"):
@@ -57,24 +56,21 @@ with st.sidebar:
 
     st.divider()
     st.header("Configuracion del LLM")
-    st.session_state.setdefault("selected_providers", ["fake"])
+    st.session_state.setdefault("selected_providers", [])
     st.session_state.setdefault("mode", "router")
     st.session_state.setdefault("max_retries", 1)
-    all_providers = ["fake", "openai", "gemini", "groq", "mistral", "ollama", "deepseek"]
+    all_providers = ["openai", "gemini", "groq", "mistral", "ollama", "deepseek"]
     selected_providers = st.multiselect("Proveedores activos", all_providers, key="selected_providers")
 
     configs = {}
-    for p in selected_providers:
-        if p == "fake":
-            continue
-        with st.expander(f"Configuracion {p.upper()}"):
-            model = st.text_input(f"Modelo de {p}", value=DEFAULT_MODELS.get(p, ""), key=f"{p}_model")
-            if p == "ollama":
-                base_url = st.text_input(f"Base URL de {p}", value="http://localhost:11434", key=f"{p}_base")
-                configs[p] = {"model": model, "base_url": base_url}
-            else:
-                api_key = st.text_input(f"API key de {p}", value=os.getenv(f"{p.upper()}_API_KEY", ""), type="password", key=f"{p}_key")
-                configs[p] = {"api_key": api_key, "model": model}
+    if selected_providers:
+        for p in selected_providers:
+            base = {"model": DEFAULT_MODELS.get(p, "")}
+            if p != "ollama":
+                base["api_key"] = os.getenv(f"{p.upper()}_API_KEY", "")
+            configs[p] = base
+    else:
+        configs = {}
 
     modes = ["router", "parallel", "moe", "retry"]
     mode = st.selectbox("Modo de generacion", modes, key="mode")
